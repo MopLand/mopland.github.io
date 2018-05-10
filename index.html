@@ -24,6 +24,7 @@
 		  <th scope="col">域名</th>
 		  <th scope="col">释义</th>
 		  <th scope="col">价格</th>
+		  <th scope="col">PING</th>
 		  <th scope="col">售出时间</th>
 		</tr>
 	  </thead>
@@ -33,6 +34,7 @@
 		  <td>{{d[0]}}</td>
 		  <td>{{d[1]}}</td>
 		  <td>{{d[2]}}</td>
+		  <td v-bind:domain="d[0]"></td>
 		  <td>{{d[3]}}</td>
 		</tr>
 	  </tbody>
@@ -49,6 +51,7 @@
 		  <th scope="col">域名</th>
 		  <th scope="col">释义</th>
 		  <th scope="col">价格</th>
+		  <th scope="col">PING</th>
 		  <th scope="col">售出时间</th>
 		</tr>
 	  </thead>
@@ -58,6 +61,7 @@
 		  <td>{{d[0]}}</td>
 		  <td>{{d[1]}}</td>
 		  <td>{{d[2]}}</td>
+		  <td v-bind:domain="d[0]"></td>
 		  <td>{{d[3]}}</td>
 		</tr>
 	  </tbody>
@@ -98,84 +102,123 @@
 <code hidden="analysis">
 <script type="text/javascript">
 var app = new Vue({
-  el: '#app',
-  data: {
-    app: [
-		['aibang.app','爱帮',''],
-		['aidai.app','爱戴、爱贷',''],
-		['anfan.app','安防',''],
-		['anfeng.app','安锋',''],
-		['anqu.app','安趣',''],
-		['bami.app','巴米',''],
-		['biai.app','必爱、币爱',''],
-		['bibibi.app','哔哔哔',''],
-		['biqi.app','必起、荸荠',''],
-		['demoxx.app','Demo++',''],
-		['didadi.app','滴答滴',''],
-		['dididi.app','滴滴滴',''],
-		['eland.app','依恋',''],
-		['facexx.app','Face++',''],
-		['fanghua.app','芳华',''],
-		['fanhua.app','繁花',''],
-		['fengqu.app','丰趣',''],
-		['fenmo.app','粉墨、粉末',''],
-		['fenqian.app','分钱',''],
-		['glee.app','',''],
-		['gumi.app','',''],
-		['haoba.app','好吧',''],
-		['haohao.app','好好、好号',''],
-		['haotao.app','好淘',''],
-		['haozan.app','好赞',''],
-		['kalong.app','卡农',''],
-		['kaike.app','开课',''],
-		['klass.app','',''],
-		['laiqian.app','来钱',''],
-		['lehu.app','乐虎、乐乎',''],
-		['malong.app','码农',''],
-		['maxcom.app','',''],
-		['maxthon.app','傲游',''],
-		['mibao.app','密保、蜜宝',''],
-		['midai.app','米贷、米袋',''],
-		['nece.app','内测',''],
-		['nene.app','内内',''],
-		['paidai.app','派代、拍代',''],
-		['paixia.app','拍下',''],
-		['pingxx.app','Ping++',''],
-		['qianba.app','钱吧',''],
-		['qinhua.app','清华',''],
-		['ruixin.app','瑞星、瑞鑫',''],
-		['ruixing.app','瑞幸',''],
-		['songguo.app','松果',''],
-		['tiaodan.app','跳蛋、挑单',''],
-		['xdev.app','',''],
-		['xiaba.app','下吧、下巴',''],
-		['xiabibi.app','瞎哔哔',''],
-		['xiaoqian.app','小钱',''],
-		['xiba.app','',''],
-		['xidai.app','喜贷、喜袋',''],
-		['xigu.app','硒鼓、矽谷',''],
-		['xindian.app','新店',''],
-		['xingbao.app','星宝',''],
-		['xingu.app','新股',''],
-		['xinqian.app','信签、新钱',''],
-		['xinqu.app','新区',''],
-		['xinyi.app','信义、心意',''],
-		['xinyou.app','新游',''],
-		['xiqi.app','稀奇',''],
-		['xiqian.app','喜钱',''],
-		['xitu.app','稀土',''],
-		['xixigu.app','嬉戏谷','']
-	],
-	com: [
-		['geedou.com','吉豆',''],
-		['geeduo.com','吉多',''],
-		['geezan.com','吉赞、集赞',''],
-		['hgbang.com','',''],
-		['keegou.com','可购',''],
-		['keeguo.com','可多',''],
-		['mopland.com','','']
-	]
-  }
+	el: '#app',
+	data: {
+		app: [
+			['aibang.app','爱帮',''],
+			['aidai.app','爱戴、爱贷',''],
+			['anfan.app','安防',''],
+			['anfeng.app','安锋',''],
+			['anqu.app','安趣',''],
+			['bami.app','巴米',''],
+			['biai.app','必爱、币爱',''],
+			['bibibi.app','哔哔哔',''],
+			['biqi.app','必起、荸荠',''],
+			['demoxx.app','Demo++',''],
+			['didadi.app','滴答滴',''],
+			['dididi.app','滴滴滴',''],
+			['eland.app','依恋',''],
+			['facexx.app','Face++',''],
+			['fanghua.app','芳华',''],
+			['fanhua.app','繁花',''],
+			['fengqu.app','丰趣',''],
+			['fenmo.app','粉墨、粉末',''],
+			['fenqian.app','分钱',''],
+			['glee.app','',''],
+			['gumi.app','',''],
+			['haoba.app','好吧',''],
+			['haohao.app','好好、好号',''],
+			['haotao.app','好淘',''],
+			['haozan.app','好赞',''],
+			['kalong.app','卡农',''],
+			['kaike.app','开课',''],
+			['klass.app','',''],
+			['laiqian.app','来钱',''],
+			['lehu.app','乐虎、乐乎',''],
+			['malong.app','码农',''],
+			['maxcom.app','',''],
+			['maxthon.app','傲游',''],
+			['mibao.app','密保、蜜宝',''],
+			['midai.app','米贷、米袋',''],
+			['nece.app','内测',''],
+			['nene.app','内内',''],
+			['paidai.app','派代、拍代',''],
+			['paixia.app','拍下',''],
+			['pingxx.app','Ping++',''],
+			['qianba.app','钱吧',''],
+			['qinhua.app','清华',''],
+			['ruixin.app','瑞星、瑞鑫',''],
+			['ruixing.app','瑞幸',''],
+			['songguo.app','松果',''],
+			['tiaodan.app','跳蛋、挑单',''],
+			['xdev.app','',''],
+			['xiaba.app','下吧、下巴',''],
+			['xiabibi.app','瞎哔哔',''],
+			['xiaoqian.app','小钱',''],
+			['xiba.app','',''],
+			['xidai.app','喜贷、喜袋',''],
+			['xigu.app','硒鼓、矽谷',''],
+			['xindian.app','新店',''],
+			['xingbao.app','星宝',''],
+			['xingu.app','新股',''],
+			['xinqian.app','信签、新钱',''],
+			['xinqu.app','新区',''],
+			['xinyi.app','信义、心意',''],
+			['xinyou.app','新游',''],
+			['xiqi.app','稀奇',''],
+			['xiqian.app','喜钱',''],
+			['xitu.app','稀土',''],
+			['xixigu.app','嬉戏谷','']
+		],
+		com: [
+			['geedou.com','吉豆',''],
+			['geeduo.com','吉多',''],
+			['geezan.com','吉赞、集赞',''],
+			['hgbang.com','',''],
+			['keegou.com','可购',''],
+			['keeguo.com','可多',''],
+			['mopland.com','','']
+		]
+	},
+	methods : {
+	
+		ping: function(s, n) {
+			function t() {
+				var e = new Date - r;
+				n && n(e);
+			}
+			function e(){
+				n && n('ERROR');
+			}
+			this.img = new Image;
+			var r = new Date;
+			this.img.onload = t, this.img.src = s;
+			this.img.onerror = e;
+		},
+	
+		test: function( ret ){
+		
+			var self = this;
+		
+			for( var x = 0; x < ret.length; x++ ){
+			
+				(function( dom ){
+				
+					var src = 'http://' + dom + '/favicon.ico';					
+					self.ping( src, function(e) {
+						document.querySelector('[domain="'+ dom +'"]').innerHTML = e;
+					});
+				
+				})( ret[x][0] );
+			
+			}
+			
+		}
+	},
+	mounted : function(){
+		this.test( this.app );
+		this.test( this.com );
+	}
 });
 
 </script>
