@@ -204,7 +204,7 @@ var app = new Vue({
 			
 				(function( dom ){
 				
-					var src = 'http://' + dom + '/favicon.ico';					
+					var src = '//' + dom + '/favicon.ico';					
 					self.ping( src, function(e) {
 						document.querySelector('[domain="'+ dom +'"]').innerHTML = e;
 					});
