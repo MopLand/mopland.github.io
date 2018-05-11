@@ -1,0 +1,7 @@
+;; CNAME Records
+;; @	300	IN	CNAME	appdomain.veryide.net.
+*	300	IN	CNAME	appdomain.veryide.net.
+www	300	IN	CNAME	appdomain.veryide.net.
+
+;; A Records (IPv4 addresses)
+@	1	IN	A	119.28.89.129

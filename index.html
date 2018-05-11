@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html manifest2="/cache.manifest">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>域名出售</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>极品双拼域名出售</title>
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
@@ -13,59 +14,66 @@
 
 <div class="container" id="app">
 
+	<p></p>
+
+	<div class="alert alert-success" role="alert">
+		<p class="lead">好的域名是成功的开始。</p>
+		<p class="lead text-right">—— 鲁迅</p>
+	</div>
+
 	<nav class="navbar navbar-light">
 		<a class="navbar-brand" href="#">.APP 域名</a>
 	</nav>
 
-	<table class="table table-striped">
-	  <thead>
-		<tr>
-		  <th scope="col">#</th>
-		  <th scope="col">域名</th>
-		  <th scope="col">释义</th>
-		  <th scope="col">价格</th>
-		  <th scope="col">PING</th>
-		  <th scope="col">售出时间</th>
-		</tr>
-	  </thead>
-	  <tbody>
-		<tr v-for="(d, i) in app">
-		  <th scope="row">{{i + 1}}</th>
-		  <td>{{d[0]}}</td>
-		  <td>{{d[1]}}</td>
-		  <td>{{d[2]}}</td>
-		  <td v-bind:domain="d[0]"></td>
-		  <td>{{d[3]}}</td>
-		</tr>
-	  </tbody>
-	</table>
+	<div class="table-responsive">
+		<table class="table table-striped">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">域名</th>
+			  <th scope="col">释义</th>
+			  <th scope="col">状态</th>
+			  <th scope="col" v-if="!mobi()">PING</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr v-for="(d, i) in app">
+			  <th scope="row">{{i + 1}}</th>
+			  <td>{{d[0]}}</td>
+			  <td>{{d[1]}}</td>
+			  <td>{{d[2] ? '已出' : '可售'}}</td>
+			  <td v-bind:domain="d[0]" v-if="!mobi()"></td>
+			</tr>
+		  </tbody>
+		</table>
+	</div>
 	
 	<nav class="navbar navbar-light">
 		<a class="navbar-brand" href="#">.COM 域名</a>
 	</nav>
 
-	<table class="table table-striped">
-	  <thead>
-		<tr>
-		  <th scope="col">#</th>
-		  <th scope="col">域名</th>
-		  <th scope="col">释义</th>
-		  <th scope="col">价格</th>
-		  <th scope="col">PING</th>
-		  <th scope="col">售出时间</th>
-		</tr>
-	  </thead>
-	  <tbody>
-		<tr v-for="(d, i) in com">
-		  <th scope="row">{{i + 1}}</th>
-		  <td>{{d[0]}}</td>
-		  <td>{{d[1]}}</td>
-		  <td>{{d[2]}}</td>
-		  <td v-bind:domain="d[0]"></td>
-		  <td>{{d[3]}}</td>
-		</tr>
-	  </tbody>
-	</table>
+	<div class="table-responsive">
+		<table class="table table-striped">
+		  <thead>
+			<tr>
+			  <th scope="col">#</th>
+			  <th scope="col">域名</th>
+			  <th scope="col">释义</th>
+			  <th scope="col">状态</th>
+			  <th scope="col" v-if="!mobi()">PING</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr v-for="(d, i) in com">
+			  <th scope="row">{{i + 1}}</th>
+			  <td>{{d[0]}}</td>
+			  <td>{{d[1]}}</td>
+			  <td>{{d[2] ? '已出' : '可售'}}</td>
+			  <td v-bind:domain="d[0]" v-if="!mobi()"></td>
+			</tr>
+		  </tbody>
+		</table>
+	</div>
 
 	<nav class="navbar navbar-light">
 		<a class="navbar-brand" href="#">带价咨询</a>
@@ -75,16 +83,16 @@
 		<div class="col">
 			<div class="card">
 			<div class="card-body">
-				<h4>E-Mail</h4>
-				<p class="text-secondary">veryide@qq.com</p>
+				<h6 class="text-secondary">E-Mail</h6>
+				<h5>veryide#qq.com</h5>
 			</div>
 			</div>
 		</div>
 		<div class="col">
 			<div class="card">
 			<div class="card-body">
-				<h4>WeChat</h4>
-				<p class="text-secondary">veryide</p>
+				<h6 class="text-secondary">WeChat</h6>
+				<h5>veryide</h5>
 			</div>
 			</div>
 		</div>
@@ -93,8 +101,7 @@
 	<hr />
 
 	<footer class="text-center">
-		<div class="links"></div>
-		<div class="title">吉多特惠 &copy;</div>
+		<p class="text-muted">VeryIDE &copy;</p>
 	</footer>
 
 </div>
@@ -108,8 +115,9 @@ var app = new Vue({
 			['aibang.app','爱帮',''],
 			['aidai.app','爱戴、爱贷',''],
 			['anfan.app','安防',''],
-			['anfeng.app','安锋',''],
+			['anfeng.app','安锋、安丰',''],
 			['anqu.app','安趣',''],
+			['aliqin.app','阿里亲',''],
 			['bami.app','巴米',''],
 			['biai.app','必爱、币爱',''],
 			['bibibi.app','哔哔哔',''],
@@ -120,52 +128,61 @@ var app = new Vue({
 			['eland.app','依恋',''],
 			['facexx.app','Face++',''],
 			['fanghua.app','芳华',''],
-			['fanhua.app','繁花',''],
-			['fengqu.app','丰趣',''],
+			['fanhua.app','繁花、泛华',''],
+			['fengqu.app','丰趣、风趣',''],
 			['fenmo.app','粉墨、粉末',''],
 			['fenqian.app','分钱',''],
-			['glee.app','',''],
-			['gumi.app','',''],
+			['glee.app','欢乐合唱团',''],
+			['gumi.app','谷米、股迷',''],
 			['haoba.app','好吧',''],
 			['haohao.app','好好、好号',''],
 			['haotao.app','好淘',''],
 			['haozan.app','好赞',''],
 			['kalong.app','卡农',''],
 			['kaike.app','开课',''],
-			['klass.app','',''],
+			['klass.app','克拉斯',''],
 			['laiqian.app','来钱',''],
 			['lehu.app','乐虎、乐乎',''],
 			['malong.app','码农',''],
-			['maxcom.app','',''],
+			['maxcom.app','美思康',''],
 			['maxthon.app','傲游',''],
 			['mibao.app','密保、蜜宝',''],
 			['midai.app','米贷、米袋',''],
 			['nece.app','内测',''],
-			['nene.app','内内',''],
+			['nene.app','内内、呢呢',''],
 			['paidai.app','派代、拍代',''],
+			['paibi.app','派币、排比',''],
 			['paixia.app','拍下',''],
 			['pingxx.app','Ping++',''],
 			['qianba.app','钱吧',''],
+			['qinba.app','秦巴、琴吧',''],
+			['qingba.app','清吧',''],
+			['qingou.app','亲购、亲狗',''],
+			['qinguo.app','秦国',''],
 			['qinhua.app','清华',''],
 			['ruixin.app','瑞星、瑞鑫',''],
 			['ruixing.app','瑞幸',''],
 			['songguo.app','松果',''],
+			['tanche.app','谈车',''],
+			['tangu.app','谈股',''],
+			['tanbi.app','谈币',''],
+			['tanqian.app','谈钱',''],
 			['tiaodan.app','跳蛋、挑单',''],
 			['xdev.app','',''],
 			['xiaba.app','下吧、下巴',''],
 			['xiabibi.app','瞎哔哔',''],
 			['xiaoqian.app','小钱',''],
-			['xiba.app','',''],
+			['xiba.app','西巴、戏吧',''],
 			['xidai.app','喜贷、喜袋',''],
 			['xigu.app','硒鼓、矽谷',''],
-			['xindian.app','新店',''],
+			['xindian.app','新店、心电',''],
 			['xingbao.app','星宝',''],
 			['xingu.app','新股',''],
 			['xinqian.app','信签、新钱',''],
-			['xinqu.app','新区',''],
+			['xinqu.app','新区、新曲',''],
 			['xinyi.app','信义、心意',''],
 			['xinyou.app','新游',''],
-			['xiqi.app','稀奇',''],
+			['xiqi.app','稀奇、喜气',''],
 			['xiqian.app','喜钱',''],
 			['xitu.app','稀土',''],
 			['xixigu.app','嬉戏谷','']
@@ -182,13 +199,17 @@ var app = new Vue({
 	},
 	methods : {
 	
+		mobi: function(){
+			return /(iPhone|iPad|iPod|Android)/i.test( navigator.userAgent );
+		},
+	
 		ping: function(s, n) {
 			function t() {
 				var e = new Date - r;
 				n && n(e);
 			}
 			function e(){
-				n && n('ERROR');
+				n && n('-');
 			}
 			this.img = new Image;
 			var r = new Date;
@@ -216,10 +237,22 @@ var app = new Vue({
 		}
 	},
 	mounted : function(){
-		this.test( this.app );
-		this.test( this.com );
+		if( !this.mobi() ){
+			this.test( this.app );
+			this.test( this.com );		
+		}
 	}
 });
+
+/////////////////
+
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?c50c967bc9d0752cb5c490185a9a9b86";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
 
 </script>
 </code>

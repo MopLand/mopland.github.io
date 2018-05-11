@@ -1,0 +1,10 @@
+CACHE MANIFEST  
+#16:02 2018/5/11
+CACHE:
+index.html
+favicon.ico
+//cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css
+//cdn.bootcss.com/vue/2.5.16/vue.min.js
+
+NETWORK:
+index.html
