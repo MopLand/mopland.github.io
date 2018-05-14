@@ -1,5 +1,6 @@
 CACHE MANIFEST  
 #16:02 2018/5/11
+
 CACHE:
 index.html
 favicon.ico
@@ -7,4 +8,4 @@ favicon.ico
 //cdn.bootcss.com/vue/2.5.16/vue.min.js
 
 NETWORK:
-index.html
+*

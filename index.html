@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest2="/cache.manifest">
+<html manifest="/cache.manifest">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -22,7 +22,7 @@
 	</div>
 
 	<nav class="navbar navbar-light">
-		<a class="navbar-brand" href="#">.APP 域名</a>
+		<a class="navbar-brand">.APP 域名</a>
 	</nav>
 
 	<div class="table-responsive">
@@ -39,7 +39,7 @@
 		  <tbody>
 			<tr v-for="(d, i) in app">
 			  <th scope="row">{{i + 1}}</th>
-			  <td>{{d[0]}}</td>
+			  <td><a v-bind:href="'//' + d[0]">{{d[0]}}</a></td>
 			  <td>{{d[1]}}</td>
 			  <td>{{d[2] ? '已出' : '可售'}}</td>
 			  <td v-bind:domain="d[0]" v-if="!mobi()"></td>
@@ -49,7 +49,7 @@
 	</div>
 	
 	<nav class="navbar navbar-light">
-		<a class="navbar-brand" href="#">.COM 域名</a>
+		<a class="navbar-brand">.COM 域名</a>
 	</nav>
 
 	<div class="table-responsive">
@@ -101,7 +101,7 @@
 	<hr />
 
 	<footer class="text-center">
-		<p class="text-muted">VeryIDE &copy;</p>
+		<p class="text-muted">&copy; VeryIDE</p>
 	</footer>
 
 </div>
@@ -168,6 +168,8 @@ var app = new Vue({
 			['tanbi.app','谈币',''],
 			['tanqian.app','谈钱',''],
 			['tiaodan.app','跳蛋、挑单',''],
+			['joygame.app','锦游、英雄互娱',''],
+			['gamejoy.app','卓趣游戏',''],
 			['xdev.app','',''],
 			['xiaba.app','下吧、下巴',''],
 			['xiabibi.app','瞎哔哔',''],
