@@ -129,6 +129,7 @@ var app = new Vue({
 			['facexx.app','Face++',''],
 			['fanghua.app','芳华',''],
 			['fanhua.app','繁花、泛华',''],
+			['fengche.app','风车',''],
 			['fengqu.app','丰趣、风趣',''],
 			['fenmo.app','粉墨、粉末',''],
 			['fenqian.app','分钱',''],
@@ -150,6 +151,7 @@ var app = new Vue({
 			['midai.app','米贷、米袋',''],
 			['nece.app','内测',''],
 			['nene.app','内内、呢呢',''],
+			['oray.app','花生壳、向日葵',''],
 			['paidai.app','派代、拍代',''],
 			['paibi.app','派币、排比',''],
 			['paixia.app','拍下',''],
@@ -180,6 +182,7 @@ var app = new Vue({
 			['xindian.app','新店、心电',''],
 			['xingbao.app','星宝',''],
 			['xingu.app','新股',''],
+			['ximi.app','西米、戏迷',''],
 			['xinqian.app','信签、新钱',''],
 			['xinqu.app','新区、新曲',''],
 			['xinyi.app','信义、心意',''],
@@ -200,6 +203,10 @@ var app = new Vue({
 		]
 	},
 	methods : {
+	
+		file: function(){
+			return location.protocol == 'file:';
+		},
 	
 		mobi: function(){
 			return /(iPhone|iPad|iPod|Android)/i.test( navigator.userAgent );
@@ -239,7 +246,7 @@ var app = new Vue({
 		}
 	},
 	mounted : function(){
-		if( !this.mobi() ){
+		if( !this.file() && !this.mobi() ){
 			this.test( this.app );
 			this.test( this.com );		
 		}
